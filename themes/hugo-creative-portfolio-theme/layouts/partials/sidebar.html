@@ -1,0 +1,23 @@
+<div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="sidebar-p">I am a creative illustrator and graphic designer with more than 10 years of experience. </p>
+    <p class="sidebar-p">Originally from Toronto, currently based in London. </p>
+    <ul class="sidebar-menu">
+      {{ $url := .Site.BaseURL }}
+      {{ range .Site.Params.navlinks }}
+        <li><a href="{{ $url }}{{ .url }}">{{ .name }}</a></li>
+      {{ end }}
+    </ul>
+    {{ partial "socialButtonsInSideBar.html" . }}
+
+    <div class="copyright">
+      <p class="credit">
+        {{ if and (isset .Site.Params "copyright") .Site.Params.copyright }}
+          {{ .Site.Params.copyright | safeHTML }}
+        {{ end }}
+        {{ partial "attribution.html" . }}
+      </p>
+    </div>
+  </div>
+</div>
